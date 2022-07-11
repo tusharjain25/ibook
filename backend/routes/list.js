@@ -1,7 +1,7 @@
 const express= require('express');
 const router=express.Router();
 var fetchuser=require('../middleware/fetchuser');  
-const Note =require('../models/Note');
+const list=require('../models/List')
 const { body, validationResult } = require("express-validator");
 
 
