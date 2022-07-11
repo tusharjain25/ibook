@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const {Schema}=mongoose;
-const ListSchema = new Schema({
+const NoteSchema = new Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
     },
-    name: {
+    Title: {
         type: String,
         required: true
     },
@@ -14,4 +14,4 @@ const ListSchema = new Schema({
         default: Date.now
     },
 });
-module.exports = mongoose.model('list', ListSchema);
+module.exports = mongoose.model('notes',NoteSchema);
