@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Navo from "./Navo";
 import "font-awesome/css/font-awesome.min.css";
 import logo from "../Assets/ibooklogo.png";
 
-const Login = () => {
+const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
@@ -24,11 +23,13 @@ const Login = () => {
     const json = await response.json();
     console.log(json);
     if (json.success) {
+
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
+      props.showAlert("Logged in successfully","success");
       navigate("/Home");
     } else {
-      alert("invalid credentials");
+      props.showAlert("Invalid credentials","danger");
     }
   };
 
@@ -38,9 +39,8 @@ const Login = () => {
 
   return (
     <>
-      <Navo />
 
-      <div className="container">
+      <div className="container mt-3">
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-9 col-lg-6 col-xl-5">

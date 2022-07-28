@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Navo from "./Navo";
+
 import logo from "../Assets/ibooklogo.png";
 import "font-awesome/css/font-awesome.min.css";
 
-const Signup = () => {
+const Signup = (props) => {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -28,8 +28,10 @@ const Signup = () => {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
       navigate("/Home");
+      props.showAlert("Account created successfully","success");
     } else {
-      alert("invalid credentials");
+     // alert("invalid credentials");
+      props.showAlert("Invalid details","danger");
     }
   };
 
@@ -39,8 +41,7 @@ const Signup = () => {
 
   return (
     <>
-      <Navo />
-      <div className="container">
+      <div className="container ">
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-9 col-lg-6 col-xl-5">
@@ -73,7 +74,7 @@ const Signup = () => {
                   </button>
                 </div>
 
-                <div className="divider d-flex justify-content-center align-items-center my-4">
+                <div className="divider d-flex justify-content-center align-items-center my-2">
                   <p className="text-center fw-bold mx-3 mb-0">Or</p>
                 </div>
 

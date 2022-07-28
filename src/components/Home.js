@@ -1,15 +1,15 @@
 import React from "react";
-import Navbar from "./Navbar";
 import Notes from "./Notes";
-// import Alert from "./Alert";
 
-const Home = () => {
+
+
+const Home = (props) => {
+  const {showAlert}=props;
+ 
   return (
     <>
-      {/* <Alert msg="this is a amazing website"/> */}
-      <Navbar />
       <div className="container">
-        <Notes />
+        <Notes showAlert={showAlert} />
       </div>
     </>
   );
