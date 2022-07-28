@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Navbar";
+import Notes from "./Notes";
+// import Alert from "./Alert";
 
 const Home = () => {
   return (
-    <div>
-      this is iBook
-    </div>
-  )
-}
+    <>
+      {/* <Alert msg="this is a amazing website"/> */}
+      <Navbar />
+      <div className="container">
+        <Notes />
+      </div>
+    </>
+  );
+};
 
-export default Home
+export default Home;
