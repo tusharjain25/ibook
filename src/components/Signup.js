@@ -82,7 +82,7 @@ const Signup = (props) => {
                   {/* <label className="form-label" htmlFor="form3Example3">name-:</label> */}
                   <input
                     type="name"
-                    id="form3Example2"
+                    id="form2Example2"
                     name="name"
                     className="form-control form-control-lg"
                     placeholder="Enter your name"
@@ -112,7 +112,7 @@ const Signup = (props) => {
                   {/* <label className="form-label" htmlFor="form3Example4">Password-: </label> */}
                   <input
                     type="password"
-                    id="form3Example4"
+                    id="form4Example4"
                     className="form-control form-control-lg"
                     placeholder="Enter a valid password"
                     value={credentials.password}

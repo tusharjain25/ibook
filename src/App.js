@@ -7,7 +7,7 @@ import NoteState from "./context/notes/NoteState";
 import { useState } from "react";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
-
+import Chatpage from "./components/Chatpage";
 
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
         <Alert alert={alert}/>
           <Routes>
             <Route exact path="/Home" element={<Home showAlert={showAlert}/>}></Route>
+            <Route exact path="/chats" element={<Chatpage showAlert={showAlert}/>}></Route>
             <Route exact path="/" element={<Login showAlert={showAlert}/>}></Route>
             <Route exact path="/Signup" element={<Signup showAlert={showAlert}/>}></Route>
           </Routes>

@@ -14,7 +14,7 @@ const Notes = (props) => {
         getNotes()
     }else{
         navigate("/");
-    }
+     }
         // eslint-disable-next-line
     }, [])
     const ref = useRef(null)

@@ -40,9 +40,9 @@ const Login = (props) => {
   return (
     <>
 
-      <div className="container mt-3">
-        <div className="container-fluid h-custom">
-          <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="container mt-3 ">
+        <div className="container-fluid ">
+          <div className="row d-flex justify-content-center align-items-center ">
             <div className="col-md-9 col-lg-6 col-xl-5">
               <img src={logo} className="img-fluid" alt="Sample" />
             </div>
@@ -141,26 +141,29 @@ const Login = (props) => {
             </div>
           </div>
         </div>
-        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark fixed-bottom">
-          <div className="text-white mb-3 mb-md-0 ">
-            2022 All rights reserved.
-          </div>
+                  <footer className="fixed-bottom bottom-0 ">
+                  <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark ">
+                    <div className="text-white mb-3 mb-md-0 ">
+                      2022 All rights reserved.
+                    </div>
 
-          <div>
-            <Link to="#!" className="text-white me-4">
-              <i className="fa fa-facebook fa-lg"></i>
-            </Link>
-            <Link to="#!" className="text-white me-4">
-              <i className="fa fa-twitter fa-lg"></i>
-            </Link>
-            <Link to="#!" className="text-white me-4">
-              <i className="fa fa-google fa-lg"></i>
-            </Link>
-            <Link to="#!" className="text-white">
-              <i className="fa fa-linkedin fa-lg"></i>
-            </Link>
-          </div>
-        </div>
+                    <div>
+                      <Link to="#!" className="text-white me-4">
+                        <i className="fa fa-facebook fa-lg"></i>
+                      </Link>
+                      <Link to="#!" className="text-white me-4">
+                        <i className="fa fa-twitter fa-lg"></i>
+                      </Link>
+                      <Link to="#!" className="text-white me-4">
+                        <i className="fa fa-google fa-lg"></i>
+                      </Link>
+                      <Link to="#!" className="text-white">
+                        <i className="fa fa-linkedin fa-lg"></i>
+                      </Link>
+                    </div>
+                  </div>
+                  </footer>
+                  
       </div>
     </>
   );
