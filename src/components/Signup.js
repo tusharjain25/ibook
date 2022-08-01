@@ -6,12 +6,13 @@ import logo from "../Assets/ibooklogo.png";
 import "font-awesome/css/font-awesome.min.css";
 
 const Signup = (props) => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = credentials;

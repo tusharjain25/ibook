@@ -17,7 +17,8 @@ router.get('/fetchallnotes',fetchuser,async (req,res)=>{
 })
 
 
-router.post('/addnote',fetchuser, [
+router.post('/addnote',fetchuser, 
+  [
     body("title", "Enter a valid title").isLength({ min: 3 }),
     body("description", "description must be of atleast 5 characters").isLength({
       min: 5,
@@ -83,4 +84,4 @@ router.delete('/deletenote/:id', fetchuser, async (req, res) => {
   }
 })
 
-module.exports=router
+module.exports=router;

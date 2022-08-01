@@ -12,6 +12,7 @@ const Navbar = (props) => {
     navigate("/");
   };
   return (
+    <>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
           <div className="container-fluid" >
           <Link className="navbar-brand " to="#!" >
@@ -47,10 +48,11 @@ const Navbar = (props) => {
               {!localStorage.getItem('token')?<form className="d-flex" role="search">
               <Link className="btn btn-dark mx-1" to="/" role="button">Login</Link>
               <Link className="btn btn-dark mx-1" to="/Signup" role="button">signup</Link>
-              </form>: <button onClick={handleLogout} className="btn btn-primary ">Logout</button>}
+              </form>:<button onClick={handleLogout} className="btn btn-primary ">Logout</button>}
             </div>
           </div>
         </nav>
+        </>
   );
 };
 
