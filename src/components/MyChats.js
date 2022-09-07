@@ -25,11 +25,11 @@ const MyChats = ({fetchagain}) => {
   };
 
   const fetchChats = async () => {
-    // console.log(user._id);
+    //console.log(user._id);
     try {
       const config = {
         headers: {
-          
+          "Content-Type": "application/json",
           "auth-token":localStorage.getItem('token'),
         },
       };

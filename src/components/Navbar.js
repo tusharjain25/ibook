@@ -47,10 +47,15 @@ const Navbar = (props) => {
                     Home
                   </Link>
                 </li>
+                <li>
+                {!localStorage.getItem('token')?
+                 <Link className="btn btn-primary" to="/Notes" role="button"> ----- </Link>
+                  :<Link className="btn btn-primary" to="/Notes" role="button">notes</Link>}
+                </li>
               </ul> 
 
 
-              {!localStorage.getItem("token")?<form className="d-flex" role="search">
+              {!localStorage.getItem('token')?<form className="d-flex" role="search">
               <Link className="btn btn-dark mx-1" to="/" role="button">Login</Link>
               <Link className="btn btn-dark mx-1" to="/Signup" role="button">signup</Link>
               </form>:<button onClick={handleLogout} className="btn btn-primary ">Logout</button> }

@@ -56,7 +56,4 @@ router.post('/',fetchuser,async (req,res)=>{
     
 })
 
-
-
-
 module.exports = router;

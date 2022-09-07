@@ -9,7 +9,7 @@ import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import ChatState from "./context/chat/ChatState";
 import Chatpage from "./pages/Chatpage";
-
+import Notes from "./pages/Notes";
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
             <Alert alert={alert}/>
         <div className="app">
           <Routes>
-          
+            <Route exact path="/Notes" element={<Notes showAlert={showAlert}/>}></Route>
             <Route exact path="/Home" element={<Home showAlert={showAlert}/>}></Route>
             <Route exact path="/Chatpage" element={<Chatpage showAlert={showAlert}/>}></Route>
             <Route exact path="/" element={<Login showAlert={showAlert}/>}></Route>
