@@ -1,35 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "font-awesome/css/font-awesome.min.css";
+
 import logo from "../Assets/ibooklogo.png";
+import "font-awesome/css/font-awesome.min.css";
 
-const Login = (props) => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+const Signup = (props) => {
   const navigate = useNavigate();
-
+  const [credentials, setCredentials] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const { username, email, password } = credentials;
+    const response = await fetch("http://localhost:5000/api/auth/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email: credentials.email,
-        password: credentials.password,
-      }),
+      body: JSON.stringify({ username, email, password }),
     });
     const json = await response.json();
     console.log(json);
     if (json.success) {
-
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
-      props.showAlert("Logged in successfully","success");
       navigate("/Home");
+      props.showAlert("Account created successfully","success");
     } else {
-      props.showAlert("Invalid credentials","danger");
+     // alert("invalid credentials");
+      props.showAlert("Invalid details","danger");
     }
   };
 
@@ -39,10 +42,9 @@ const Login = (props) => {
 
   return (
     <>
-
-      <div className="container mt-3 ">
-        <div className="container-fluid ">
-          <div className="row d-flex justify-content-center align-items-center ">
+      <div className="container ">
+        <div className="container-fluid h-custom">
+          <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-9 col-lg-6 col-xl-5">
               <img src={logo} className="img-fluid" alt="Sample" />
             </div>
@@ -50,10 +52,10 @@ const Login = (props) => {
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form onSubmit={handleSubmit}>
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mt-3">
-                  <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+                  <p className="lead fw-normal mb-0 me-3">Sign up with</p>
                   <button
                     type="button"
-                    className="btn btn-dark btn-floating mx-1 "
+                    className="btn btn-dark  btn-floating mx-1 "
                   >
                     <i className="fa fa-facebook fa-lg"></i>
                   </button>
@@ -73,8 +75,21 @@ const Login = (props) => {
                   </button>
                 </div>
 
-                <div className="divider d-flex justify-content-center align-items-center my-4">
+                <div className="divider d-flex justify-content-center align-items-center my-2">
                   <p className="text-center fw-bold mx-3 mb-0">Or</p>
+                </div>
+
+                <div className="form-outline mb-4">
+                  {/* <label className="form-label" htmlFor="form3Example3">name-:</label> */}
+                  <input
+                    type="name"
+                    id="form2Example2"
+                    name="username"
+                    className="form-control form-control-lg"
+                    placeholder="Enter your name"
+                    value={credentials.username}
+                    onChange={onChange}
+                  />
                 </div>
 
                 <div className="form-outline mb-4">
@@ -98,12 +113,14 @@ const Login = (props) => {
                   {/* <label className="form-label" htmlFor="form3Example4">Password-: </label> */}
                   <input
                     type="password"
-                    id="form3Example4"
+                    id="form4Example4"
                     className="form-control form-control-lg"
-                    placeholder="Enter password"
+                    placeholder="Enter a valid password"
                     value={credentials.password}
                     onChange={onChange}
                     name="password"
+                    minLength={5}
+                    required
                   />
                 </div>
 
@@ -121,13 +138,13 @@ const Login = (props) => {
                   </div>
                 </div>
 
-                <div className="text-center text-lg-start mt-4 pt-2">
+                <div className="text-center text-lg-start mt-2 pt-2">
                   <button
                     type="submit"
                     className="btn btn-dark btn-lg"
                     style={{ paddingLeft: " 2.5rem", paddingRight: "2.5rem" }}
                   >
-                    Login
+                    Signup
                   </button>
 
                   <p className="small fw-bold mt-2 pt-1 mb-0">
@@ -141,32 +158,29 @@ const Login = (props) => {
             </div>
           </div>
         </div>
-                  <footer className="fixed-bottom bottom-0 ">
-                  <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark ">
-                    <div className="text-white mb-3 mb-md-0 ">
-                      2022 All rights reserved.
-                    </div>
+        <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark fixed-bottom ">
+          <div className="text-white mb-3 mb-md-0 ">
+            2022 All rights reserved.
+          </div>
 
-                    <div>
-                      <Link to="#!" className="text-white me-4">
-                        <i className="fa fa-facebook fa-lg"></i>
-                      </Link>
-                      <Link to="#!" className="text-white me-4">
-                        <i className="fa fa-twitter fa-lg"></i>
-                      </Link>
-                      <Link to="#!" className="text-white me-4">
-                        <i className="fa fa-google fa-lg"></i>
-                      </Link>
-                      <Link to="#!" className="text-white">
-                        <i className="fa fa-linkedin fa-lg"></i>
-                      </Link>
-                    </div>
-                  </div>
-                  </footer>
-                  
+          <div>
+            <Link to="#!" className="text-white me-4">
+              <i className="fa fa-facebook fa-lg"></i>
+            </Link>
+            <Link to="#!" className="text-white me-4">
+              <i className="fa fa-twitter fa-lg"></i>
+            </Link>
+            <Link to="#!" className="text-white me-4">
+              <i className="fa fa-google fa-lg"></i>
+            </Link>
+            <Link to="#!" className="text-white">
+              <i className="fa fa-linkedin fa-lg"></i>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
 };
 
-export default Login;
+export default Signup;

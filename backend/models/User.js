@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const {Schema}=mongoose;
 const UserSchema = new Schema({
-    name: {
+    username: {
         type: String,
-        required: true
+        required: true,
+        max: 20,
     },
     email: {
         type: String,
@@ -16,6 +17,7 @@ const UserSchema = new Schema({
     },
     pic: {
         type: "String",
+        required: true,
         default:
           "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
       },
@@ -29,7 +31,7 @@ const UserSchema = new Schema({
         default: Date.now
     },
     },
-    { timestaps: true }
+    { timestamps: true }
     
 );
 const User = mongoose.model('User', UserSchema);

@@ -1,13 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import NoteState from "./context/notes/NoteState";
 import { useState } from "react";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
-import Chatpage from "./components/Chatpage";
+import ChatState from "./context/chat/ChatState";
+import Chatpage from "./pages/Chatpage";
+
 
 
 function App() {
@@ -25,18 +27,22 @@ function App() {
 
   return (
     <>
+    <ChatState>
       <NoteState>
-        <Router>
-          <Navbar/>
-        <Alert alert={alert}/>
+       
+      <Navbar/>
+            <Alert alert={alert}/>
+        <div className="app">
           <Routes>
+          
             <Route exact path="/Home" element={<Home showAlert={showAlert}/>}></Route>
-            <Route exact path="/chats" element={<Chatpage showAlert={showAlert}/>}></Route>
+            <Route exact path="/Chatpage" element={<Chatpage showAlert={showAlert}/>}></Route>
             <Route exact path="/" element={<Login showAlert={showAlert}/>}></Route>
             <Route exact path="/Signup" element={<Signup showAlert={showAlert}/>}></Route>
           </Routes>
-        </Router>
+          </div>
       </NoteState>
+      </ChatState>
     </>
   );
 }

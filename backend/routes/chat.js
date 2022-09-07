@@ -64,7 +64,7 @@ router.get('/fetchchat',fetchuser ,async (req, res) => {
           .then(async (results) => {
             results = await User.populate(results, {
               path: "latestMessage.sender",
-              select: "name pic email",
+              select: "username pic email",
             });
             res.status(200).send(results);
           });
@@ -78,7 +78,7 @@ router.get('/fetchchat',fetchuser ,async (req, res) => {
 })
 
 router.post('/group',fetchuser, async (req, res) => {
-    if (!req.body.users || !req.body.name) {
+    if (!req.body.users || !req.body.username) {
         return res.status(400).send({ message: "Please Fill all the feilds" });
       }
     
@@ -94,7 +94,7 @@ router.post('/group',fetchuser, async (req, res) => {
     
       try {
         const groupChat = await Chat.create({
-          chatName: req.body.name,
+          chatName: req.body.username,
           users: users,
           isGroupChat: true,
           groupAdmin: req.user,
